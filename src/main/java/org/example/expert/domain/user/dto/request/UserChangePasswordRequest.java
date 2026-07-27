@@ -13,6 +13,11 @@ import lombok.NoArgsConstructor;
 public class UserChangePasswordRequest {
 
     @NotBlank
+    @Min(value = 8, message = "비밀번호는 8자 이상이어야 합니다")
+    @Pattern(
+            regexp = "^(?=.*[A-Z])(?=.*\\d)$",
+            message = "비밀번호는 숫자와 대문자를 포함해야 합니다."
+    )
     private String oldPassword;
 
     @NotBlank
